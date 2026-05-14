@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deotech - Anasayfa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 2rem;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .hero h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            margin-top: 4rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Deotech</h1>
+        <p>Teknoloji ve İnovasyon</p>
+    </header>
+
+    <div class="container">
+        <section class="hero">
+            <h2>Hoş Geldiniz</h2>
+            <p>Deotech olarak teknoloji alanında yenilikçi çözümler sunuyoruz. Web siteniz yakında daha fazla içerikle güncellenecektir.</p>
+            <a href="#iletisim" class="btn">İletişime Geçin</a>
+        </section>
+
+        <section class="features">
+            <div class="feature-card">
+                <h3>Yenilikçi Çözümler</h3>
+                <p>Modern teknolojiler kullanarak iş süreçlerinizi optimize ediyoruz.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Profesyonel Destek</h3>
+                <p>Uzman ekibimizle 7/24 yanınızdayız.</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>Güvenilir Hizmet</h3>
+                <p>Güvenlik ve kalite standartlarımızla hizmet veriyoruz.</p>
+            </div>
+        </section>
+
+        <section id="iletisim" style="margin-top: 4rem; text-align: center;">
+            <h2 style="color: #667eea; margin-bottom: 1rem;">İletişim</h2>
+            <p>Daha fazla bilgi için bizimle iletişime geçin.</p>
+            <p style="margin-top: 1rem;">E-posta: info@deotech.com.tr</p>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Deotech. Tüm hakları saklıdır.</p>
+    </footer>
+</body>
+</html>
