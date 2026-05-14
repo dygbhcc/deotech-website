@@ -1,0 +1,19 @@
+<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Left bracket/square -->
+  <rect x="0" y="8" width="8" height="8" fill="#031f41"/>
+  <rect x="8" y="8" width="8" height="8" fill="#031f41"/>
+  <rect x="0" y="16" width="8" height="8" fill="#031f41"/>
+  <rect x="0" y="24" width="8" height="8" fill="#031f41"/>
+
+  <!-- Top angled part -->
+  <polygon points="16,8 32,8 24,16 16,16" fill="#031f41"/>
+
+  <!-- Arrow inside -->
+  <polygon points="8,24 16,16 24,24 20,24 16,20 12,24" fill="#031f41"/>
+
+  <!-- Red chevron -->
+  <polygon points="24,8 32,16 32,24 40,16 40,8" fill="#E31E24"/>
+
+  <!-- DEOTECH text -->
+  <text x="50" y="30" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#031f41" letter-spacing="-0.02em">DEOTECH</text>
+</svg>
