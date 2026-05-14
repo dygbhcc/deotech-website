@@ -1,19 +1,20 @@
-<svg width="180" height="40" viewBox="0 0 180 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <!-- Left bracket/square -->
-  <rect x="0" y="8" width="8" height="8" fill="#ffffff"/>
-  <rect x="8" y="8" width="8" height="8" fill="#ffffff"/>
-  <rect x="0" y="16" width="8" height="8" fill="#ffffff"/>
-  <rect x="0" y="24" width="8" height="8" fill="#ffffff"/>
+<svg width="200" height="48" viewBox="0 0 200 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon container -->
+  <g transform="translate(0, 4)">
+    <!-- Outer frame pieces -->
+    <rect x="0" y="0" width="10" height="10" fill="#ffffff" rx="1"/>
+    <rect x="12" y="0" width="18" height="10" fill="#ffffff" rx="1"/>
+    <rect x="0" y="12" width="10" height="10" fill="#ffffff" rx="1"/>
+    <rect x="0" y="24" width="10" height="10" fill="#ffffff" rx="1"/>
+    <rect x="12" y="24" width="10" height="10" fill="#ffffff" rx="1"/>
 
-  <!-- Top angled part -->
-  <polygon points="16,8 32,8 24,16 16,16" fill="#ffffff"/>
+    <!-- Inner arrow -->
+    <path d="M 15 18 L 20 13 L 25 18 L 22 18 L 20 16 L 18 18 Z" fill="#ffffff"/>
 
-  <!-- Arrow inside -->
-  <polygon points="8,24 16,16 24,24 20,24 16,20 12,24" fill="#ffffff"/>
+    <!-- Red accent chevron -->
+    <path d="M 32 0 L 44 0 L 44 12 L 38 18 L 32 12 Z" fill="#E31E24"/>
+  </g>
 
-  <!-- Red chevron -->
-  <polygon points="24,8 32,16 32,24 40,16 40,8" fill="#E31E24"/>
-
-  <!-- DEOTECH text -->
-  <text x="50" y="30" font-family="Inter, sans-serif" font-size="28" font-weight="700" fill="#ffffff" letter-spacing="-0.02em">DEOTECH</text>
+  <!-- Text -->
+  <text x="58" y="34" font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif" font-size="24" font-weight="700" fill="#ffffff" letter-spacing="-0.5">DEOTECH</text>
 </svg>
