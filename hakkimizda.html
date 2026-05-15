@@ -119,18 +119,50 @@
   </head>
 <body class="bg-background text-on-surface font-body-md">
 <!-- TopAppBar -->
-<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile h-16 bg-surface dark:bg-inverse-surface shadow-sm">
+<nav class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16 bg-surface shadow-md">
 <div class="flex items-center gap-4">
-<span class="material-symbols-outlined text-primary dark:text-inverse-primary cursor-pointer">menu</span>
-<span class="font-headline-md text-headline-md-mobile font-bold tracking-tight text-primary dark:text-inverse-primary">Deotech</span>
+<button id="mobile-menu-btn" class="md:hidden material-symbols-outlined text-primary cursor-pointer hover:bg-surface-container-high p-2 rounded-lg transition-colors" data-icon="menu">menu</button>
+<a href="index.html" class="hover:opacity-80 transition-opacity flex items-center">
+<img src="logo.png" alt="Deotech Logo" class="h-10 object-contain" />
+</a>
 </div>
-<div class="hidden md:flex items-center gap-8">
-<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant style_inactive_navigation hover:bg-surface-container-high transition-colors px-3 py-1 rounded" href="#">Hizmetler</a>
-<a class="font-label-md text-label-md text-on-surface-variant dark:text-surface-variant style_inactive_navigation hover:bg-surface-container-high transition-colors px-3 py-1 rounded" href="hizmetler.html">Hizmetler</a>
-<a class="font-label-md text-label-md text-secondary dark:text-secondary-fixed-dim font-bold style_active_navigation" href="hakkimizda.html">Hakkımızda</a>
+<div class="hidden md:flex items-center gap-6">
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="index.html">Anasayfa</a>
+<a class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors" href="hizmetler.html">Hizmetler</a>
+<a class="font-label-md text-label-md text-secondary font-bold hover:text-primary transition-colors" href="hakkimizda.html">Hakkımızda</a>
 </div>
-<button class="bg-secondary text-on-secondary px-6 py-2 rounded font-label-md text-label-md font-bold uppercase transition-all hover:opacity-80 active:scale-95">İletişim</button>
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2">
+<a href="about-en.html" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">EN</a>
+<span class="text-on-surface-variant">|</span>
+<span class="font-label-md text-label-md text-primary font-bold">TR</span>
+</div>
+<a href="mailto:info@deotech.com" class="hidden md:block bg-secondary text-on-secondary px-6 py-2 rounded-lg font-label-md text-label-md font-bold transition-all hover:bg-secondary/90">İletişim</a>
+</div>
 </nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="fixed inset-0 bg-black/50 z-40 hidden">
+<div class="fixed inset-y-0 left-0 w-64 bg-surface shadow-xl">
+<div class="flex flex-col h-full">
+<div class="flex items-center justify-between p-4 border-b border-outline-variant">
+<img src="logo.png" alt="Deotech" class="h-8" />
+<button id="mobile-menu-close" class="material-symbols-outlined text-primary cursor-pointer p-2 hover:bg-surface-container-high rounded-lg transition-colors">close</button>
+</div>
+<nav class="flex flex-col p-4 gap-2">
+<a class="font-label-md text-label-md text-on-surface-variant py-3 px-4 rounded-lg hover:bg-surface-container-high transition-colors" href="index.html">Anasayfa</a>
+<a class="font-label-md text-label-md text-on-surface-variant py-3 px-4 rounded-lg hover:bg-surface-container-high transition-colors" href="hizmetler.html">Hizmetler</a>
+<a class="font-label-md text-label-md text-primary font-bold py-3 px-4 rounded-lg hover:bg-surface-container-high transition-colors" href="hakkimizda.html">Hakkımızda</a>
+<a href="mailto:info@deotech.com" class="font-label-md text-label-md bg-secondary text-on-secondary py-3 px-4 rounded-lg hover:bg-secondary/90 transition-all text-center mt-4">İletişim</a>
+<div class="flex items-center gap-3 justify-center mt-4 pt-4 border-t border-outline-variant">
+<a href="about-en.html" class="font-label-md text-label-md text-on-surface-variant hover:text-primary transition-colors">EN</a>
+<span class="text-on-surface-variant">|</span>
+<span class="font-label-md text-label-md text-primary font-bold">TR</span>
+</div>
+</nav>
+</div>
+</div>
+</div>
 <main class="pt-16">
 <!-- Hero Section -->
 <header class="relative w-full py-section-padding px-margin-mobile overflow-hidden bg-primary overflow-hidden">
@@ -321,7 +353,7 @@
 <h2 class="font-headline-lg text-headline-lg text-on-primary">Birlikte İnşa Edelim</h2>
 <p class="text-on-primary/70 mt-2">Teknolojik vizyonunuzu gerçeğe dönüştürmek için hazırız.</p>
 </div>
-<button class="relative z-10 bg-secondary text-on-secondary px-8 py-4 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-secondary-container transition-colors soft-elevation">Bizimle İletişime Geçin</button>
+<a href="mailto:info@deotech.com?subject=İş Birliği Talebi" class="relative z-10 bg-secondary text-on-secondary px-8 py-4 rounded-full font-label-md text-label-md font-bold uppercase hover:bg-secondary-container transition-colors soft-elevation inline-block">Bizimle İletişime Geçin</a>
 <div class="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
 </div>
 </section>
@@ -337,4 +369,45 @@
 </div>
 <p class="font-body-md text-body-md opacity-60">© 2024 Deotech. Precision-first Software &amp; Consultancy.</p>
 </footer>
+
+<script>
+// Mobile menu functionality
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const mobileMenu = document.getElementById('mobile-menu');
+const mobileMenuClose = document.getElementById('mobile-menu-close');
+
+function openMobileMenu() {
+    mobileMenu.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu() {
+    mobileMenu.classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+if (mobileMenuBtn) {
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+}
+
+if (mobileMenuClose) {
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+}
+
+// Close menu when clicking outside
+if (mobileMenu) {
+    mobileMenu.addEventListener('click', function(e) {
+        if (e.target === mobileMenu) {
+            closeMobileMenu();
+        }
+    });
+}
+
+// Close menu on escape key
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape' && !mobileMenu.classList.contains('hidden')) {
+        closeMobileMenu();
+    }
+});
+</script>
 </body></html>
