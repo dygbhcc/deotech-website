@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deotech — Engineering Excellence. Delivered Without Overhead.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --dn:#1B2D5E;--dn2:#0D1626;--brd:#8B1A2C;--brd2:#a82035;
+  --teal:#6EC9C4;--teal2:#3aada7;--tealb:rgba(110,201,196,0.13);
+  --white:#fff;--offwhite:#F7F8FA;--gray:#64748B;--lightgray:#E2E8F0;
+  --text:#0F172A;--textsub:#64748B;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;color:var(--text);background:var(--white);font-size:15px;line-height:1.6;}
+h1,h2,h3,h4{font-family:'Playfair Display',serif;}
+a{text-decoration:none;color:inherit;}
+.page{display:none;} .page.active{display:block;}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--lightgray);padding:0 5%;}
+.nav-inner{max-width:1200px;margin:0 auto;height:68px;display:flex;align-items:center;justify-content:space-between;}
+.nav-logo img{height:100px;display:block;mix-blend-mode:multiply;background:transparent;}
+.nav-links{display:flex;align-items:center;gap:32px;}
+.nav-link{font-size:14px;color:var(--textsub);cursor:pointer;transition:color .2s;}
+.nav-link:hover{color:var(--dn);}
+.nav-link.active-nav{color:var(--dn);font-weight:500;}
+.lang-sw{font-size:12px;font-weight:500;color:var(--textsub);border:1px solid var(--lightgray);border-radius:5px;padding:4px 9px;cursor:pointer;}
+.nav-cta{background:var(--brd);color:white;border:none;border-radius:8px;padding:9px 20px;font-size:13px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.nav-cta:hover{background:var(--brd2);}
+
+/* ── UTILS ── */
+.container{max-width:1200px;margin:0 auto;padding:0 5%;}
+.pill{display:inline-flex;align-items:center;gap:6px;background:var(--tealb);color:var(--teal2);border:1px solid rgba(110,201,196,0.3);border-radius:20px;padding:5px 14px;font-size:11px;font-weight:500;letter-spacing:.07em;text-transform:uppercase;}
+.pill-navy{background:rgba(27,45,94,0.07);color:var(--dn);border-color:rgba(27,45,94,0.18);}
+.pill-red{background:rgba(139,26,44,0.08);color:var(--brd);border-color:rgba(139,26,44,0.2);}
+.btn-red{display:inline-flex;align-items:center;gap:8px;background:var(--brd);color:white;border:none;border-radius:8px;padding:13px 26px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.btn-red:hover{background:var(--brd2);}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.25);border-radius:8px;padding:13px 22px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;}
+.btn-outline:hover{border-color:rgba(255,255,255,.5);color:white;}
+.btn-white{background:white;color:var(--brd);border:none;border-radius:8px;padding:13px 26px;font-size:14px;font-weight:500;cursor:pointer;font-family:'Inter',sans-serif;}
+section{padding:80px 0;}
+
+/* ── HERO ── */
+.hero{background:var(--dn);color:white;padding:100px 0 80px;position:relative;overflow:hidden;}
+.hero-ring1{position:absolute;top:-80px;right:-80px;width:420px;height:420px;border:1px solid rgba(110,201,196,.1);border-radius:50%;}
+.hero-ring2{position:absolute;top:-10px;right:-10px;width:260px;height:260px;border:1px solid rgba(110,201,196,.07);border-radius:50%;}
+.hero-sq{position:absolute;bottom:-60px;left:5%;width:140px;height:140px;border:1px solid rgba(255,255,255,.04);transform:rotate(45deg);}
+.hero-inner{position:relative;z-index:2;}
+.hero h1{font-size:clamp(32px,4vw,50px);line-height:1.18;max-width:600px;margin:22px 0 22px;}
+.hero-accent{color:var(--teal);}
+.hero-sub{font-size:16px;line-height:1.8;color:rgba(255,255,255,.68);max-width:520px;margin-bottom:36px;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.hero-trust{margin-top:56px;padding-top:28px;border-top:1px solid rgba(255,255,255,.08);display:flex;gap:32px;flex-wrap:wrap;}
+.trust-item{display:flex;align-items:center;gap:9px;font-size:13px;color:rgba(255,255,255,.5);}
+.trust-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;}
+
+/* ── STATS ── */
+.stats-bar{background:var(--offwhite);border-bottom:1px solid var(--lightgray);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-cell{padding:32px 24px;text-align:center;border-right:1px solid var(--lightgray);}
+.stat-cell:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:34px;color:var(--dn);}
+.stat-num span{color:var(--teal);}
+.stat-label{font-size:11px;color:var(--textsub);margin-top:5px;text-transform:uppercase;letter-spacing:.07em;}
+
+/* ── INDUSTRY STRIP ── */
+.strip{background:white;border-bottom:1px solid var(--lightgray);padding:14px 0;}
+.strip-inner{display:flex;align-items:center;gap:12px;flex-wrap:wrap;}
+.strip-lbl{font-size:10px;color:var(--textsub);text-transform:uppercase;letter-spacing:.07em;white-space:nowrap;}
+.strip-badges{display:flex;gap:7px;flex-wrap:wrap;margin-left:12px;}
+.strip-badge{font-size:12px;color:var(--textsub);border:1px solid var(--lightgray);border-radius:5px;padding:4px 10px;}
+
+/* ── SERVICES GRID ── */
+.services-section{background:var(--dn);}
+.svc-header{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:40px;}
+.svc-header-left h2{font-size:clamp(22px,2.5vw,30px);color:white;line-height:1.3;margin-top:14px;max-width:420px;}
+.svc-header-left p{font-size:14px;color:rgba(255,255,255,.5);margin-top:10px;line-height:1.75;}
+.svc-count{font-size:11px;color:rgba(110,201,196,.6);border:1px solid rgba(110,201,196,.2);border-radius:5px;padding:5px 11px;white-space:nowrap;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07);border-radius:12px;overflow:hidden;}
+.svc-card{background:rgba(255,255,255,.025);padding:28px 24px;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;position:relative;}
+.svc-card:hover{background:rgba(255,255,255,.065);border-bottom-color:var(--teal);}
+.svc-card-new{background:rgba(139,26,44,.06);}
+.svc-card-new:hover{background:rgba(139,26,44,.12);border-bottom-color:var(--brd);}
+.svc-new-badge{position:absolute;top:14px;right:14px;font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:rgba(139,26,44,.65);color:rgba(255,255,255,.9);border-radius:3px;padding:2px 7px;}
+.svc-icon{width:38px;height:38px;background:rgba(110,201,196,.14);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px;color:var(--teal);}
+.svc-card-new .svc-icon{background:rgba(139,26,44,.18);color:#e8869a;}
+.svc-num{font-size:10px;font-weight:500;color:rgba(110,201,196,.55);letter-spacing:.1em;margin-bottom:7px;}
+.svc-card-new .svc-num{color:rgba(232,134,154,.55);}
+.svc-title{font-family:'Playfair Display',serif;font-size:15px;color:white;margin-bottom:9px;line-height:1.3;}
+.svc-desc{font-size:12px;color:rgba(255,255,255,.46);line-height:1.78;}
+.svc-tags{display:flex;flex-wrap:wrap;gap:4px;margin-top:14px;}
+.svc-tag{font-size:10px;color:rgba(110,201,196,.75);border:1px solid rgba(110,201,196,.18);border-radius:3px;padding:2px 7px;}
+.svc-card-new .svc-tag{color:rgba(232,134,154,.75);border-color:rgba(139,26,44,.22);}
+.svc-learn{font-size:11px;color:rgba(110,201,196,.6);margin-top:16px;display:flex;align-items:center;gap:5px;}
+.svc-card-new .svc-learn{color:rgba(232,134,154,.6);}
+
+/* ── TECH STACK ── */
+.tech-row{margin-bottom:22px;}
+.tech-cat-lbl{font-size:10px;font-weight:500;color:var(--textsub);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.tech-badges{display:flex;flex-wrap:wrap;gap:7px;}
+.tech-badge{display:flex;align-items:center;gap:7px;border:1px solid var(--lightgray);border-radius:8px;padding:7px 14px;font-size:12px;font-weight:500;color:var(--text);background:white;transition:border-color .2s;}
+.tech-badge:hover{border-color:var(--teal);}
+.dot{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.dt{background:var(--teal);} .dn{background:var(--dn);} .dr{background:var(--brd);} .dg{background:#94a3b8;}
+
+/* ── ABOUT ── */
+.about-section{background:var(--offwhite);}
+.about-grid{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start;}
+.about-visual{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.about-avatar{width:120px;height:120px;border-radius:50%;background:linear-gradient(145deg,var(--dn),#243a72);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:32px;color:white;border:3px solid var(--teal);}
+.about-card{background:white;border:1px solid var(--lightgray);border-radius:12px;padding:16px;text-align:center;width:100%;}
+.about-name{font-family:'Playfair Display',serif;font-size:15px;color:var(--text);}
+.about-role{font-size:11px;color:var(--textsub);margin-top:3px;line-height:1.5;}
+.about-creds{display:flex;flex-wrap:wrap;justify-content:center;gap:4px;margin-top:9px;}
+.about-cred{font-size:9px;color:var(--teal2);border:1px solid rgba(110,201,196,.3);border-radius:3px;padding:2px 7px;}
+.about-content h2{font-size:clamp(22px,2.5vw,28px);line-height:1.3;margin:14px 0 14px;}
+.about-body{font-size:14px;color:var(--textsub);line-height:1.85;}
+.about-quote{border-left:3px solid var(--teal);padding-left:18px;margin:22px 0;font-family:'Playfair Display',serif;font-size:15px;font-style:italic;color:var(--text);line-height:1.65;}
+.about-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:24px;}
+.am{background:white;border:1px solid var(--lightgray);border-radius:8px;padding:14px;text-align:center;}
+.am-num{font-family:'Playfair Display',serif;font-size:22px;color:var(--dn);}
+.am-lbl{font-size:9px;color:var(--textsub);margin-top:3px;text-transform:uppercase;letter-spacing:.05em;}
+
+/* ── CTA BANNER ── */
+.cta-section{background:var(--brd);}
+.cta-inner{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap;}
+.cta-inner h2{font-size:clamp(20px,2.5vw,26px);color:white;line-height:1.35;max-width:440px;}
+.cta-inner p{font-size:13px;color:rgba(255,255,255,.65);margin-top:8px;}
+
+/* ── FOOTER ── */
+footer{background:var(--dn2);padding:56px 0 24px;}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;margin-bottom:48px;}
+.footer-logo img{height:32px;filter:brightness(0) invert(1);background:transparent;}
+.footer-brand p{font-size:12px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:14px;max-width:220px;}
+.footer-reg{font-size:10px;color:rgba(255,255,255,.18);margin-top:8px;line-height:1.6;}
+.footer-col h4{font-size:10px;font-weight:500;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;}
+.footer-col a{display:block;font-size:13px;color:rgba(255,255,255,.3);margin-bottom:9px;cursor:pointer;transition:color .2s;}
+.footer-col a:hover{color:rgba(255,255,255,.6);}
+.footer-col a.highlight{color:var(--teal);opacity:.8;}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.06);padding-top:20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;}
+.footer-copy{font-size:11px;color:rgba(255,255,255,.2);}
+
+/* ══════════════════════════════════════
+   SERVICE PAGE STYLES
+══════════════════════════════════════ */
+.svc-page-hero{background:var(--dn);color:white;padding:80px 0 60px;position:relative;overflow:hidden;}
+.svc-page-hero .hero-ring1,.svc-page-hero .hero-ring2{opacity:.5;}
+.svc-hero-inner{position:relative;z-index:2;}
+.back-btn{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:rgba(255,255,255,.5);cursor:pointer;margin-bottom:28px;transition:color .2s;}
+.back-btn:hover{color:rgba(255,255,255,.8);}
+.svc-hero-num{font-size:11px;color:rgba(110,201,196,.6);letter-spacing:.1em;margin-bottom:10px;}
+.svc-page-hero h1{font-size:clamp(28px,3.5vw,42px);line-height:1.2;max-width:560px;margin-bottom:18px;}
+.svc-page-hero .sub{font-size:15px;color:rgba(255,255,255,.65);max-width:520px;line-height:1.8;margin-bottom:32px;}
+.svc-hero-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px;}
+.svc-hero-tag{font-size:11px;color:rgba(110,201,196,.8);border:1px solid rgba(110,201,196,.2);border-radius:4px;padding:4px 10px;}
+
+/* service page sections */
+.sp-section{padding:72px 0;}
+.sp-section.alt{background:var(--offwhite);}
+.sp-section.dark{background:var(--dn);color:white;}
+.sp-2col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+.sp-h2{font-size:clamp(20px,2.5vw,26px);color:var(--text);line-height:1.3;margin-bottom:16px;}
+.sp-h2.light{color:white;}
+.sp-body{font-size:14px;color:var(--textsub);line-height:1.85;}
+.sp-body.light{color:rgba(255,255,255,.6);}
+.sp-list{list-style:none;margin-top:20px;}
+.sp-list li{display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--textsub);margin-bottom:14px;line-height:1.7;}
+.sp-list li.light{color:rgba(255,255,255,.6);}
+.sp-check{width:20px;height:20px;background:var(--tealb);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:11px;color:var(--teal2);}
+.sp-check.red{background:rgba(139,26,44,.1);color:var(--brd);}
+.process-steps{display:flex;flex-direction:column;gap:0;}
+.process-step{display:flex;gap:20px;padding:20px 0;border-bottom:1px solid var(--lightgray);}
+.process-step:last-child{border-bottom:none;}
+.step-num{font-family:'Playfair Display',serif;font-size:28px;color:var(--teal);flex-shrink:0;width:40px;line-height:1;}
+.step-body h4{font-family:'Playfair Display',serif;font-size:16px;color:var(--text);margin-bottom:5px;}
+.step-body p{font-size:13px;color:var(--textsub);line-height:1.75;}
+.for-whom{background:var(--dn);border-radius:12px;padding:28px;margin-top:8px;}
+.for-whom h4{font-family:'Playfair Display',serif;font-size:16px;color:white;margin-bottom:14px;}
+.for-whom li{font-size:13px;color:rgba(255,255,255,.55);margin-bottom:9px;display:flex;align-items:center;gap:8px;line-height:1.6;}
+.fw-dot{width:5px;height:5px;background:var(--teal);border-radius:50%;flex-shrink:0;}
+.sp-cta{background:var(--brd);border-radius:12px;padding:36px;text-align:center;margin-top:56px;}
+.sp-cta h3{font-family:'Playfair Display',serif;font-size:20px;color:white;margin-bottom:8px;}
+.sp-cta p{font-size:13px;color:rgba(255,255,255,.65);margin-bottom:20px;}
+
+/* deliverables cards */
+.deliverables{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-top:20px;}
+.del-card{background:white;border:1px solid var(--lightgray);border-radius:10px;padding:18px;}
+.del-card h4{font-size:14px;font-weight:500;color:var(--text);margin-bottom:5px;}
+.del-card p{font-size:12px;color:var(--textsub);line-height:1.65;}
+.del-icon{font-size:20px;margin-bottom:10px;}
+
+@media(max-width:768px){
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .stats-grid{grid-template-columns:repeat(2,1fr);}
+  .about-grid,.sp-2col{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .nav-links .nav-link{display:none;}
+}
+@media(max-width:480px){
+  .svc-grid{grid-template-columns:1fr;}
+  .footer-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer;">
+      <img src="screen-removebg-preview.png" alt="Deotech">
+    </div>
+    <div class="nav-links">
+      <span class="nav-link" onclick="showPage('home')">Home</span>
+      <span class="nav-link" onclick="scrollToServices()">Services</span>
+      <span class="nav-link" onclick="scrollToAbout()">About</span>
+     
+      <a href="mailto:hello@deotech.com.tr" class="nav-cta" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Book a Call</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HOME PAGE ═══════════════════ -->
+<div id="page-home" class="page active">
+
+  <section class="hero">
+    <div class="hero-ring1"></div><div class="hero-ring2"></div><div class="hero-sq"></div>
+    <div class="container hero-inner">
+      <span class="pill">Est. 2020 · Global Contracts</span>
+      <h1>Engineering Excellence.<br>Delivered <span class="hero-accent">Without Overhead.</span></h1>
+      <p class="hero-sub">Deotech is a technology consultancy delivering expert software architecture, AI transformation, DevOps, and agile advisory to global organizations — with the precision of a specialist, not the overhead of an agency.</p>
+      <div class="hero-btns">
+        <a href="mailto:hello@deotech.com.tr" class="btn-red" style="text-decoration:none; cursor:pointer;">&#128197; Schedule a Discovery Call</a>
+        <button class="btn-outline" onclick="scrollToServices()">View Services →</button>
+      </div>
+      <div class="hero-trust">
+        <div class="trust-item"><div class="trust-dot"></div>17+ years of engineering depth</div>
+        <div class="trust-item"><div class="trust-dot"></div>Architecture to production</div>
+        <div class="trust-item"><div class="trust-dot"></div>International enterprise contracts</div>
+        <div class="trust-item"><div class="trust-dot"></div>AI &amp; Agile transformation</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-cell"><div class="stat-num">17<span>+</span></div><div class="stat-label">Years of Engineering Experience</div></div>
+        <div class="stat-cell"><div class="stat-num">6</div><div class="stat-label">Core Service Practices</div></div>
+        <div class="stat-cell"><div class="stat-num">99.9<span>%</span></div><div class="stat-label">Uptime SLA Delivered</div></div>
+        <div class="stat-cell"><div class="stat-num" style="font-size:24px;padding-top:5px;">Global</div><div class="stat-label">Enterprise Contracts</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="strip">
+    <div class="container strip-inner">
+      <span class="strip-lbl">Industry experience across</span>
+      <div class="strip-badges">
+        <span class="strip-badge">SaaS Platforms</span>
+        <span class="strip-badge">FinTech</span>
+        <span class="strip-badge">Data Engineering</span>
+        <span class="strip-badge">Enterprise Software</span>
+        <span class="strip-badge">AI-Native Products</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="services-section" id="services">
+    <div class="container">
+      <div class="svc-header">
+        <div class="svc-header-left">
+          <span class="pill">Core Services</span>
+          <h2>Where deep expertise meets clean execution.</h2>
+          <p>Six focused practice areas. No filler. No juniors on your account.</p>
+        </div>
+        <span class="svc-count">6 practice areas</span>
+      </div>
+      <div class="svc-grid">
+        <div class="svc-card" onclick="showPage('svc1')">
+          <div class="svc-icon">⬡</div>
+          <div class="svc-num">01 — Architecture</div>
+          <div class="svc-title">Software Architecture & Advisory</div>
+          <div class="svc-desc">Microservices, cloud-native design, and technical roadmapping that scales with your business — not against it.</div>
+          <div class="svc-tags"><span class="svc-tag">Microservices</span><span class="svc-tag">Cloud Migration</span><span class="svc-tag">System Design</span></div>
+          <div class="svc-learn">Explore service →</div>
+        </div>
+        <div class="svc-card" onclick="showPage('svc2')">
+          <div class="svc-icon">&lt;/&gt;</div>
+          <div class="svc-num">02 — Development</div>
+          <div class="svc-title">Software Engineering</div>
+          <div class="svc-desc">Custom enterprise software, API integrations, and technical debt elimination. Production-grade code, always.</div>
+          <div class="svc-tags"><span class="svc-tag">Custom Software</span><span class="svc-tag">API Integration</span><span class="svc-tag">Tech Debt</span></div>
+          <div class="svc-learn">Explore service →</div>
+        </div>
+        <div class="svc-card" onclick="showPage('svc3')">
+          <div class="svc-icon">⚙</div>
+          <div class="svc-num">03 — DevOps</div>
+          <div class="svc-title">DevOps Engineering</div>
+          <div class="svc-desc">CI/CD pipelines that work. Infrastructure as Code, Kubernetes, and containerization done right.</div>
+          <div class="svc-tags"><span class="svc-tag">CI/CD</span><span class="svc-tag">Kubernetes</span><span class="svc-tag">Terraform</span></div>
+          <div class="svc-learn">Explore service →</div>
+        </div>
+        <div class="svc-card" onclick="showPage('svc4')">
+          <div class="svc-icon">◎</div>
+          <div class="svc-num">04 — Automation</div>
+          <div class="svc-title">Automation Engineering</div>
+          <div class="svc-desc">Test automation, process automation, and full observability. Problems surface before customers notice.</div>
+          <div class="svc-tags"><span class="svc-tag">Test Automation</span><span class="svc-tag">Prometheus</span><span class="svc-tag">Grafana</span></div>
+          <div class="svc-learn">Explore service →</div>
+        </div>
+        <div class="svc-card" onclick="showPage('svc5')">
+          <div class="svc-icon">◈</div>
+          <div class="svc-num">05 — AI Transformation</div>
+          <div class="svc-title">AI Transformation & Advisory</div>
+          <div class="svc-desc">From AI-curious to AI-operational. Use-case discovery, LLM integration, and responsible deployment.</div>
+          <div class="svc-tags"><span class="svc-tag">AI Strategy</span><span class="svc-tag">LLM Integration</span><span class="svc-tag">AI Governance</span></div>
+          <div class="svc-learn">Explore service →</div>
+        </div>
+        <div class="svc-card" onclick="showPage('svc6')">
+          <div class="svc-icon">↺</div>
+          <div class="svc-num">06 — Agile Transformation</div>
+          <div class="svc-title">Agile Transformation & Coaching</div>
+          <div class="svc-desc">Pragmatic Agile adoption for engineering teams and leadership. Delivery rhythm, not ceremony.</div>
+          <div class="svc-tags"><span class="svc-tag">Scrum</span><span class="svc-tag">Kanban</span><span class="svc-tag">Team Coaching</span></div>
+          <div class="svc-learn">Explore service →</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="techstack">
+    <div class="container">
+      <span class="pill pill-navy">Technology Stack</span>
+      <h2 style="font-size:clamp(22px,2.5vw,30px);margin:14px 0 10px;">Battle-tested tools.<br>Zero fashionable fluff.</h2>
+      <p style="font-size:14px;color:var(--textsub);max-width:380px;line-height:1.75;margin-bottom:36px;">We work with the technologies your organization already depends on — and know when to introduce something better.</p>
+      <div class="tech-row"><div class="tech-cat-lbl">Cloud & Infrastructure</div><div class="tech-badges"><div class="tech-badge"><span class="dot dt"></span>AWS</div><div class="tech-badge"><span class="dot dt"></span>Azure</div><div class="tech-badge"><span class="dot dt"></span>Terraform</div><div class="tech-badge"><span class="dot dt"></span>Kubernetes</div><div class="tech-badge"><span class="dot dt"></span>Docker</div><div class="tech-badge"><span class="dot dt"></span>Helm</div></div></div>
+      <div class="tech-row"><div class="tech-cat-lbl">Data & Databases</div><div class="tech-badges"><div class="tech-badge"><span class="dot dn"></span>PostgreSQL</div><div class="tech-badge"><span class="dot dn"></span>MsSQL</div><div class="tech-badge"><span class="dot dn"></span>Redis</div><div class="tech-badge"><span class="dot dn"></span>ClickHouse</div></div></div>
+      <div class="tech-row"><div class="tech-cat-lbl">Languages & Frameworks</div><div class="tech-badges"><div class="tech-badge"><span class="dot dr"></span>Python</div><div class="tech-badge"><span class="dot dr"></span>Go</div><div class="tech-badge"><span class="dot dr"></span>.NET / C#</div><div class="tech-badge"><span class="dot dr"></span>TypeScript</div><div class="tech-badge"><span class="dot dr"></span>FastAPI</div></div></div>
+      <div class="tech-row"><div class="tech-cat-lbl">AI & LLM Tooling</div><div class="tech-badges"><div class="tech-badge"><span class="dot dr"></span>OpenAI / GPT-4o</div><div class="tech-badge"><span class="dot dr"></span>Claude API</div><div class="tech-badge"><span class="dot dr"></span>LangChain</div><div class="tech-badge"><span class="dot dr"></span>RAG Pipelines</div><div class="tech-badge"><span class="dot dr"></span>Vector DBs</div></div></div>
+      <div class="tech-row"><div class="tech-cat-lbl">Observability & CI/CD</div><div class="tech-badges"><div class="tech-badge"><span class="dot dg"></span>Prometheus</div><div class="tech-badge"><span class="dot dg"></span>Grafana</div><div class="tech-badge"><span class="dot dg"></span>GitHub Actions</div><div class="tech-badge"><span class="dot dg"></span>GitLab CI</div><div class="tech-badge"><span class="dot dg"></span>ArgoCD</div></div></div>
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-visual">
+          <div class="about-avatar">D</div>
+          <div class="about-card">
+            <div class="about-name">Duygu B.</div>
+            <div class="about-role">Principal Engineer · DEOTECH</div>
+            <div class="about-creds"><span class="about-cred">PostgreSQL</span><span class="about-cred">Platform Ops</span><span class="about-cred">AI Advisory</span></div>
+          </div>
+        </div>
+        <div class="about-content">
+          <span class="pill pill-navy">About Company</span>
+          <h2>Expert engineering team.<br>Full accountability.</h2>
+          <p class="about-body">When you work with Deotech, you work with expert engineers with over 17 years of hands-on experience across software architecture, platform operations, data engineering, AI integration, and release management.</p>
+          <div class="about-quote">"Great engineering doesn't require a large team or a large invoice. It requires the right expertise, the right depth — and the discipline to deliver."</div>
+          <p class="about-body">Operating globally since December 2020, Deotech has served technology organizations across multiple continents. From system architecture to AI transformation and agile coaching — the commitment is the same: clean thinking, honest advice, measurable outcomes.</p>
+          <div class="about-metrics">
+            <div class="am"><div class="am-num">2020</div><div class="am-lbl">Founded</div></div>
+            <div class="am"><div class="am-num">17+</div><div class="am-lbl">Yrs depth</div></div>
+            <div class="am"><div class="am-num">6</div><div class="am-lbl">Practices</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-section" id="contact">
+    <div class="container cta-inner">
+      <div>
+        <h2>Ready to solve the problem your last vendor couldn't?</h2>
+        <p>Start with a 30-minute technical discovery call — no sales pitch, no commitment required.</p>
+      </div>
+      <button class="btn-white">Schedule a Free Discovery Call →</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div><img src="footer_logo-removebg-preview.png" style="height: 50px;" alt="Deotech"></div>
+          <p>Technology consultancy. Global contracts. Expert delivery.</p>
+          <p class="footer-reg">DEOTECH Bilişim ve Danışmanlık A.Ş.<br>Incorporated in Türkiye · Est. 2020</p>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a onclick="showPage('svc1')">Software Architecture</a>
+          <a onclick="showPage('svc2')">Software Development</a>
+          <a onclick="showPage('svc3')">DevOps Engineering</a>
+          <a onclick="showPage('svc4')">Automation Engineering</a>
+          <a onclick="showPage('svc5')">AI Transformation</a>
+          <a onclick="showPage('svc6')">Agile Transformation</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a onclick="showPage('home')">Home</a>
+          <a onclick="scrollToAbout()">About</a>
+          <a href="mailto:hello@deotech.com.tr">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Get in Touch</h4>
+          <a>hello@deotech.com.tr</a>
+          <a href="https://linkedin.com/company/deotechbilisim/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    
+          <a class="highlight" style="margin-top:8px;" href="mailto:hello@deotech.com.tr">Book a Discovery Call →</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">© 2025 DEOTECH Bilişim ve Danışmanlık A.Ş. All rights reserved.</span>
+        <span class="footer-copy">Privacy Policy</span>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ═══════════════════ SERVICE PAGE TEMPLATE MACRO ═══════════════════ -->
+
+<!-- SVC 1: SOFTWARE ARCHITECTURE -->
+<div id="page-svc1" class="page">
+  <section class="svc-page-hero">
+    <div class="hero-ring1"></div><div class="hero-ring2"></div>
+    <div class="container svc-hero-inner">
+      <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
+      <span class="pill">01 — Software Architecture</span>
+      <h1>Systems built to<br>outlast your <span class="hero-accent">roadmap.</span></h1>
+      <p class="sub">We design cloud-native architectures that scale with your ambitions — not against them. From the first whiteboard to production ADRs, every decision is documented, reasoned, and yours to own.</p>
+      <div class="svc-hero-tags"><span class="svc-hero-tag">Microservices</span><span class="svc-hero-tag">Cloud Migration</span><span class="svc-hero-tag">System Design</span><span class="svc-hero-tag">Scalability</span><span class="svc-hero-tag">ADR</span><span class="svc-hero-tag">API Gateway</span></div>
+    </div>
+  </section>
+  <section class="sp-section">
+    <div class="container sp-2col">
+      <div>
+        <h2 class="sp-h2">What we address</h2>
+        <p class="sp-body">Most engineering bottlenecks aren't about people — they're about decisions made years ago under different constraints. We start by understanding your current architecture, the business pressure it's under, and where it will break next.</p>
+        <ul class="sp-list">
+          <li><div class="sp-check">✓</div>Monolith decomposition into domain-driven microservices</li>
+          <li><div class="sp-check">✓</div>Cloud-native migration strategy (AWS / Azure)</li>
+          <li><div class="sp-check">✓</div>API design, versioning, and gateway strategy</li>
+          <li><div class="sp-check">✓</div>Data architecture and event-driven system design</li>
+          <li><div class="sp-check">✓</div>Architecture Decision Records (ADR) and documentation</li>
+          <li><div class="sp-check">✓</div>Technical roadmapping and prioritization advisory</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sp-h2">Deliverables</h2>
+        <div class="deliverables">
+          <div class="del-card"><div class="del-icon">📐</div><h4>Architecture Blueprint</h4><p>Current-state analysis + target-state design with migration path and risk register.</p></div>
+          <div class="del-card"><div class="del-icon">📄</div><h4>ADR Library</h4><p>Documented decisions with context, rationale, and consequences your team can build on.</p></div>
+          <div class="del-card"><div class="del-icon">🗺</div><h4>Technical Roadmap</h4><p>Sequenced delivery plan aligned with business priorities and engineering capacity.</p></div>
+          <div class="del-card"><div class="del-icon">🔍</div><h4>Architecture Review</h4><p>Independent assessment of your existing systems with prioritized improvement recommendations.</p></div>
+        </div>
+        <div class="for-whom" style="margin-top:20px;">
+          <h4>This service is right for you if…</h4>
+          <ul class="sp-list">
+            <li class="light"><div class="fw-dot"></div>Your monolith is becoming a deployment bottleneck</li>
+            <li class="light"><div class="fw-dot"></div>You're planning a cloud migration and need a realistic plan</li>
+            <li class="light"><div class="fw-dot"></div>Engineering velocity has stalled without a clear root cause</li>
+            <li class="light"><div class="fw-dot"></div>You need an independent expert before a major technical decision</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sp-section alt">
+    <div class="container">
+      <h2 class="sp-h2">How we work</h2>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-body"><h4>Discovery & Assessment</h4><p>We map your current architecture, interview key engineers, and identify the real constraints — not the perceived ones.</p></div></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-body"><h4>Design & Validation</h4><p>We propose target architectures with explicit trade-offs. Nothing is decided without your team's input.</p></div></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-body"><h4>Documentation & Handoff</h4><p>Every decision is captured in ADR format. Your team walks away owning the architecture — not depending on us.</p></div></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-body"><h4>Advisory Retainer (Optional)</h4><p>Ongoing architecture advisory as you execute — available for reviews, second opinions, and course corrections.</p></div></div>
+      </div>
+      <div class="sp-cta"><h3>Ready to get your architecture under control?</h3><p>30-minute discovery call. No commitment required.</p><a href="mailto:hello@deotech.com.tr" class="btn-red" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Schedule a Call</a></div>
+    </div>
+  </section>
+  <footer><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0;"><span class="footer-copy">© 2025 DEOTECH — <span onclick="showPage('home')" style="cursor:pointer;color:var(--teal);opacity:.6;">← Back to Home</span></span><span class="footer-copy">Privacy Policy · EN / TR</span></div></div></footer>
+</div>
+
+<!-- SVC 2: SOFTWARE DEVELOPMENT -->
+<div id="page-svc2" class="page">
+  <section class="svc-page-hero">
+    <div class="hero-ring1"></div><div class="hero-ring2"></div>
+    <div class="container svc-hero-inner">
+      <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
+      <span class="pill">02 — Software Engineering</span>
+      <h1>Code that future engineers<br>will <span class="hero-accent">thank you for.</span></h1>
+      <p class="sub">Custom enterprise software, robust API integrations, and surgical technical debt elimination. We write production-grade code with the discipline of engineers who've inherited bad systems — and know what it costs.</p>
+      <div class="svc-hero-tags"><span class="svc-hero-tag">Custom Software</span><span class="svc-hero-tag">API Integration</span><span class="svc-hero-tag">Technical Debt</span><span class="svc-hero-tag">PostgreSQL</span><span class="svc-hero-tag">Python</span><span class="svc-hero-tag">Go</span></div>
+    </div>
+  </section>
+  <section class="sp-section">
+    <div class="container sp-2col">
+      <div>
+        <h2 class="sp-h2">What we build</h2>
+        <p class="sp-body">We specialize in the high-stakes, high-complexity work that generalist agencies struggle with: the integrations that keep failing, the legacy module nobody wants to touch, the internal tool that's become mission-critical.</p>
+        <ul class="sp-list">
+          <li><div class="sp-check">✓</div>Custom enterprise backend systems and internal tools</li>
+          <li><div class="sp-check">✓</div>REST and GraphQL API design and implementation</li>
+          <li><div class="sp-check">✓</div>Third-party API integration (ERP, CRM, payment, data)</li>
+          <li><div class="sp-check">✓</div>Legacy system modernization and refactoring</li>
+          <li><div class="sp-check">✓</div>PostgreSQL / TimescaleDB database design and optimization</li>
+          <li><div class="sp-check">✓</div>Technical debt audit and elimination roadmap</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sp-h2">Our principles</h2>
+        <div class="deliverables">
+          <div class="del-card"><div class="del-icon">📝</div><h4>Documented by default</h4><p>Every system we touch is left with clearer documentation than we found it.</p></div>
+          <div class="del-card"><div class="del-icon">🧪</div><h4>Tested at every layer</h4><p>Unit, integration, and contract tests are non-negotiable, not optional extras.</p></div>
+          <div class="del-card"><div class="del-icon">🔄</div><h4>Incremental delivery</h4><p>We ship in working increments — no big-bang releases that keep you up at night.</p></div>
+          <div class="del-card"><div class="del-icon">🤝</div><h4>Knowledge transfer</h4><p>Your team should be able to maintain and extend everything we build.</p></div>
+        </div>
+        <div class="for-whom" style="margin-top:20px;">
+          <h4>This service is right for you if…</h4>
+          <ul class="sp-list">
+            <li class="light"><div class="fw-dot"></div>You need senior-level execution, not just advisory</li>
+            <li class="light"><div class="fw-dot"></div>A critical integration keeps breaking under load</li>
+            <li class="light"><div class="fw-dot"></div>Technical debt is slowing every sprint</li>
+            <li class="light"><div class="fw-dot"></div>You need a trusted second set of hands on a critical project</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sp-section alt">
+    <div class="container">
+      <h2 class="sp-h2">How we work</h2>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-body"><h4>Scope & Specification</h4><p>We define what success looks like before writing a single line of code. Clear requirements, acceptance criteria, and edge cases.</p></div></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-body"><h4>Iterative Development</h4><p>Short cycles, frequent demos, early feedback. You see working software — not status reports.</p></div></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-body"><h4>Review & Hardening</h4><p>Code review, performance testing, security checks. We don't call it done until it's production-ready.</p></div></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-body"><h4>Deployment & Handover</h4><p>We deploy together, document everything, and make sure your team is confident taking ownership.</p></div></div>
+      </div>
+      <div class="sp-cta"><h3>Have a development challenge you need solved?</h3><p>Let's discuss the scope in a no-obligation discovery call.</p><a href="mailto:hello@deotech.com.tr" class="btn-red" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Schedule a Call</a></div>
+    </div>
+  </section>
+  <footer><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0;"><span class="footer-copy">© 2025 DEOTECH — <span onclick="showPage('home')" style="cursor:pointer;color:var(--teal);opacity:.6;">← Back to Home</span></span></div></div></footer>
+</div>
+
+<!-- SVC 3: DEVOPS -->
+<div id="page-svc3" class="page">
+  <section class="svc-page-hero">
+    <div class="hero-ring1"></div><div class="hero-ring2"></div>
+    <div class="container svc-hero-inner">
+      <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
+      <span class="pill">03 — DevOps Engineering</span>
+      <h1>Ship fast. Break nothing.<br><span class="hero-accent">Sleep well.</span></h1>
+      <p class="sub">We build the infrastructure and automation that lets your engineers deploy with confidence — multiple times a day, without fear. CI/CD pipelines, Kubernetes orchestration, and Infrastructure as Code that actually does what it says.</p>
+      <div class="svc-hero-tags"><span class="svc-hero-tag">CI/CD</span><span class="svc-hero-tag">Kubernetes</span><span class="svc-hero-tag">Terraform</span><span class="svc-hero-tag">Docker</span><span class="svc-hero-tag">IaC</span><span class="svc-hero-tag">ArgoCD</span></div>
+    </div>
+  </section>
+  <section class="sp-section">
+    <div class="container sp-2col">
+      <div>
+        <h2 class="sp-h2">What we engineer</h2>
+        <p class="sp-body">DevOps is not a job title — it's a set of practices that remove friction between writing code and delivering value. We implement the plumbing that makes fast, reliable delivery possible.</p>
+        <ul class="sp-list">
+          <li><div class="sp-check">✓</div>CI/CD pipeline design (GitHub Actions, GitLab CI, ArgoCD)</li>
+          <li><div class="sp-check">✓</div>Kubernetes cluster setup, hardening, and operations</li>
+          <li><div class="sp-check">✓</div>Infrastructure as Code with Terraform and Helm</li>
+          <li><div class="sp-check">✓</div>Containerization strategy and Docker optimization</li>
+          <li><div class="sp-check">✓</div>Secrets management and security baseline</li>
+          <li><div class="sp-check">✓</div>Release management process design</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sp-h2">Outcomes we target</h2>
+        <div class="deliverables">
+          <div class="del-card"><div class="del-icon">🚀</div><h4>Faster deploys</h4><p>From hours to minutes. Automated pipelines that run every test before anything reaches production.</p></div>
+          <div class="del-card"><div class="del-icon">🛡</div><h4>Lower blast radius</h4><p>Feature flags, canary deployments, and automated rollbacks when something goes wrong.</p></div>
+          <div class="del-card"><div class="del-icon">📦</div><h4>Reproducible infra</h4><p>Every environment defined in code. No more "it worked on my machine."</p></div>
+          <div class="del-card"><div class="del-icon">💰</div><h4>Cost efficiency</h4><p>Right-sized infrastructure and autoscaling that doesn't leave money on the table.</p></div>
+        </div>
+        <div class="for-whom" style="margin-top:20px;">
+          <h4>This service is right for you if…</h4>
+          <ul class="sp-list">
+            <li class="light"><div class="fw-dot"></div>Deployments are manual, slow, or anxiety-inducing</li>
+            <li class="light"><div class="fw-dot"></div>Your infrastructure lives in someone's head, not in code</li>
+            <li class="light"><div class="fw-dot"></div>You're migrating to Kubernetes and need an experienced guide</li>
+            <li class="light"><div class="fw-dot"></div>You want to ship daily but your pipeline won't allow it</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sp-section alt">
+    <div class="container">
+      <h2 class="sp-h2">How we work</h2>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-body"><h4>Pipeline & Infra Audit</h4><p>We document your current state, identify the bottlenecks, and build a remediation priority list.</p></div></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-body"><h4>Foundation Build</h4><p>IaC, container strategy, and baseline CI/CD — implemented iteratively with your team alongside us.</p></div></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-body"><h4>Kubernetes Rollout</h4><p>Cluster setup, workload migration, RBAC, monitoring, and on-call runbooks.</p></div></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-body"><h4>Enablement & Handover</h4><p>Your team is trained, runbooks are documented, and alerts are calibrated before we step back.</p></div></div>
+      </div>
+      <div class="sp-cta"><h3>Time to fix your delivery pipeline?</h3><p>Let's audit your current setup in a free discovery call.</p><a href="mailto:hello@deotech.com.tr" class="btn-red" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Schedule a Call</a></div>
+    </div>
+  </section>
+  <footer><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0;"><span class="footer-copy">© 2025 DEOTECH — <span onclick="showPage('home')" style="cursor:pointer;color:var(--teal);opacity:.6;">← Back to Home</span></span></div></div></footer>
+</div>
+
+<!-- SVC 4: AUTOMATION -->
+<div id="page-svc4" class="page">
+  <section class="svc-page-hero">
+    <div class="hero-ring1"></div><div class="hero-ring2"></div>
+    <div class="container svc-hero-inner">
+      <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
+      <span class="pill">04 — Automation Engineering</span>
+      <h1>Find the bugs before<br>your <span class="hero-accent">customers do.</span></h1>
+      <p class="sub">We build the automation layer that gives your team confidence: test automation that catches regressions, process automation that eliminates toil, and observability stacks that surface problems before they become incidents.</p>
+      <div class="svc-hero-tags"><span class="svc-hero-tag">Test Automation</span><span class="svc-hero-tag">Prometheus</span><span class="svc-hero-tag">Grafana</span><span class="svc-hero-tag">Process Automation</span><span class="svc-hero-tag">Alerting</span></div>
+    </div>
+  </section>
+  <section class="sp-section">
+    <div class="container sp-2col">
+      <div>
+        <h2 class="sp-h2">What we automate</h2>
+        <p class="sp-body">Manual testing and manual processes are technical debt with a human cost. We replace toil with reliable automation — freeing your engineers to build, not babysit.</p>
+        <ul class="sp-list">
+          <li><div class="sp-check">✓</div>End-to-end and integration test automation frameworks</li>
+          <li><div class="sp-check">✓</div>Load and performance testing strategy</li>
+          <li><div class="sp-check">✓</div>Business process automation (internal workflows, data pipelines)</li>
+          <li><div class="sp-check">✓</div>Prometheus metrics design and Grafana dashboard build</li>
+          <li><div class="sp-check">✓</div>Alerting strategy — signal vs. noise, escalation design</li>
+          <li><div class="sp-check">✓</div>SLO/SLA definition and error budget tracking</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sp-h2">What good looks like</h2>
+        <div class="deliverables">
+          <div class="del-card"><div class="del-icon">🧪</div><h4>Test Suite</h4><p>Automated tests at unit, integration, and E2E levels — running in CI on every commit.</p></div>
+          <div class="del-card"><div class="del-icon">📊</div><h4>Observability Stack</h4><p>Prometheus + Grafana dashboards showing the metrics that matter to your business.</p></div>
+          <div class="del-card"><div class="del-icon">🔔</div><h4>Alert Runbooks</h4><p>Every alert has a documented response procedure. No more pager fatigue from noise.</p></div>
+          <div class="del-card"><div class="del-icon">⚡</div><h4>Process Automation</h4><p>Repetitive workflows eliminated. Time returned to engineers for creative work.</p></div>
+        </div>
+        <div class="for-whom" style="margin-top:20px;">
+          <h4>This service is right for you if…</h4>
+          <ul class="sp-list">
+            <li class="light"><div class="fw-dot"></div>Your team discovers bugs from customer reports, not from tests</li>
+            <li class="light"><div class="fw-dot"></div>On-call engineers are flooded with low-signal alerts</li>
+            <li class="light"><div class="fw-dot"></div>Manual QA is slowing down your release cycle</li>
+            <li class="light"><div class="fw-dot"></div>You have no visibility into system health in production</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sp-section alt">
+    <div class="container">
+      <h2 class="sp-h2">How we work</h2>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-body"><h4>Automation Gap Analysis</h4><p>We review your current testing and monitoring coverage, identify the highest-risk gaps, and prioritize.</p></div></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-body"><h4>Framework Design</h4><p>We choose the right tools for your stack and design a sustainable test architecture — not a one-off script pile.</p></div></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-body"><h4>Build & Integrate</h4><p>Automation is built incrementally and integrated into your CI/CD pipeline as we go.</p></div></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-body"><h4>Team Enablement</h4><p>Your engineers learn to maintain and extend the automation. We leave, the coverage stays.</p></div></div>
+      </div>
+      <div class="sp-cta"><h3>Ready to stop finding bugs in production?</h3><p>Let's review your current coverage in a free discovery call.</p><a href="mailto:hello@deotech.com.tr" class="btn-red" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Schedule a Call</a></div>
+    </div>
+  </section>
+  <footer><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0;"><span class="footer-copy">© 2025 DEOTECH — <span onclick="showPage('home')" style="cursor:pointer;color:var(--teal);opacity:.6;">← Back to Home</span></span></div></div></footer>
+</div>
+
+<!-- SVC 5: AI TRANSFORMATION -->
+<div id="page-svc5" class="page">
+  <section class="svc-page-hero" style="background:linear-gradient(135deg,#1B2D5E 0%,#2d1826 100%);">
+    <div class="hero-ring1"></div><div class="hero-ring2"></div>
+    <div class="container svc-hero-inner">
+      <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
+      <span class="pill pill-red" style="color:#e8869a;border-color:rgba(139,26,44,.4);">05 — AI Transformation</span>
+      <h1>From AI-curious<br>to <span class="hero-accent">AI-operational.</span></h1>
+      <p class="sub">Most organizations know AI matters. Few know where to start — or how to separate genuine opportunity from expensive noise. We bridge the gap: honest assessment, practical use-case selection, and hands-on implementation of AI that actually works in your context.</p>
+      <div class="svc-hero-tags"><span class="svc-hero-tag">AI Strategy</span><span class="svc-hero-tag">LLM Integration</span><span class="svc-hero-tag">RAG Pipelines</span><span class="svc-hero-tag">AI Governance</span><span class="svc-hero-tag">Process AI</span><span class="svc-hero-tag">Change Management</span></div>
+    </div>
+  </section>
+  <section class="sp-section">
+    <div class="container sp-2col">
+      <div>
+        <h2 class="sp-h2">What we do</h2>
+        <p class="sp-body">AI transformation isn't about adding a chatbot to your website. It's about identifying where AI genuinely accelerates your business, building the right infrastructure for it, and ensuring your organization is ready to operate it responsibly.</p>
+        <ul class="sp-list">
+          <li><div class="sp-check red">✓</div>AI readiness assessment and opportunity mapping</li>
+          <li><div class="sp-check red">✓</div>Use-case prioritization (ROI vs. complexity matrix)</li>
+          <li><div class="sp-check red">✓</div>LLM selection and integration (OpenAI, Claude, open-source)</li>
+          <li><div class="sp-check red">✓</div>RAG (Retrieval-Augmented Generation) pipeline design and build</li>
+          <li><div class="sp-check red">✓</div>AI governance framework and responsible deployment policy</li>
+          <li><div class="sp-check red">✓</div>Team enablement and AI literacy workshops</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sp-h2">What honest AI advisory looks like</h2>
+        <div class="deliverables">
+          <div class="del-card"><div class="del-icon">🗺</div><h4>AI Opportunity Map</h4><p>Where AI will genuinely save time, reduce errors, or unlock capability — ranked by feasibility and impact.</p></div>
+          <div class="del-card"><div class="del-icon">⚗</div><h4>Proof of Concept</h4><p>A working prototype of your highest-priority use case — before any large investment is committed.</p></div>
+          <div class="del-card"><div class="del-icon">🏗</div><h4>Production Integration</h4><p>From PoC to production: API integration, data pipelines, evaluation frameworks, and monitoring.</p></div>
+          <div class="del-card"><div class="del-icon">📋</div><h4>Governance Playbook</h4><p>Data handling policies, human-in-the-loop design, and AI output auditing procedures.</p></div>
+        </div>
+        <div class="for-whom" style="margin-top:20px;">
+          <h4>This service is right for you if…</h4>
+          <ul class="sp-list">
+            <li class="light"><div class="fw-dot"></div>Leadership is asking "what are we doing with AI?" and you don't have an answer yet</li>
+            <li class="light"><div class="fw-dot"></div>You've tried AI tools but haven't achieved meaningful business impact</li>
+            <li class="light"><div class="fw-dot"></div>You want to integrate LLMs but are unsure about data security and governance</li>
+            <li class="light"><div class="fw-dot"></div>You need an independent voice — not a vendor selling a specific platform</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sp-section alt">
+    <div class="container">
+      <h2 class="sp-h2">Our AI transformation approach</h2>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-body"><h4>AI Readiness Assessment</h4><p>We evaluate your data, infrastructure, team capability, and processes to identify genuine AI opportunities — and realistic blockers.</p></div></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-body"><h4>Use-Case Selection & Business Case</h4><p>We prioritize the 2–3 use cases with the highest impact-to-effort ratio and build the internal business case with you.</p></div></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-body"><h4>Prototype & Validate</h4><p>We build a working proof of concept — fast and lean — to validate assumptions before any major commitment.</p></div></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-body"><h4>Production Deployment & Governance</h4><p>Full production integration with evaluation frameworks, monitoring, and a governance policy your team can operate independently.</p></div></div>
+      </div>
+      <div class="sp-cta" style="background:linear-gradient(135deg,#8B1A2C,#6b1421);"><h3>Curious where AI fits in your organization?</h3><p>Start with a free 30-minute AI readiness conversation — no pitch, no pressure.</p><button class="btn-white">Schedule a Free AI Consultation</button></div>
+    </div>
+  </section>
+  <footer><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0;"><span class="footer-copy">© 2025 DEOTECH — <span onclick="showPage('home')" style="cursor:pointer;color:var(--teal);opacity:.6;">← Back to Home</span></span></div></div></footer>
+</div>
+
+<!-- SVC 6: AGILE TRANSFORMATION -->
+<div id="page-svc6" class="page">
+  <section class="svc-page-hero" style="background:linear-gradient(135deg,#1B2D5E 0%,#2d1826 100%);">
+    <div class="hero-ring1"></div><div class="hero-ring2"></div>
+    <div class="container svc-hero-inner">
+      <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
+      <span class="pill pill-red" style="color:#e8869a;border-color:rgba(139,26,44,.4);">06 — Agile Transformation</span>
+      <h1>Agile isn't a ceremony.<br>It's a <span class="hero-accent">mindset.</span></h1>
+      <p class="sub">We guide engineering teams and leadership through pragmatic Agile adoption — cutting the bureaucracy, building genuine delivery rhythm, and creating teams that own their outcomes. No certification theater. No endless retrospectives about retrospectives.</p>
+      <div class="svc-hero-tags"><span class="svc-hero-tag">Scrum</span><span class="svc-hero-tag">Kanban</span><span class="svc-hero-tag">Team Coaching</span><span class="svc-hero-tag">OKRs</span><span class="svc-hero-tag">Delivery Flow</span><span class="svc-hero-tag">Leadership Alignment</span></div>
+    </div>
+  </section>
+  <section class="sp-section">
+    <div class="container sp-2col">
+      <div>
+        <h2 class="sp-h2">What we transform</h2>
+        <p class="sp-body">Most Agile transformations fail because they focus on process adoption rather than outcome improvement. We start with delivery problems — slow releases, unclear priorities, team misalignment — and work backward to the practices that solve them.</p>
+        <ul class="sp-list">
+          <li><div class="sp-check red">✓</div>Agile maturity assessment and transformation roadmap</li>
+          <li><div class="sp-check red">✓</div>Scrum and Kanban implementation and coaching</li>
+          <li><div class="sp-check red">✓</div>Team structure and collaboration design</li>
+          <li><div class="sp-check red">✓</div>OKR definition and alignment workshops</li>
+          <li><div class="sp-check red">✓</div>Engineering leadership coaching and mentoring</li>
+          <li><div class="sp-check red">✓</div>Delivery metrics setup (DORA, flow efficiency, cycle time)</li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="sp-h2">What changes look like</h2>
+        <div class="deliverables">
+          <div class="del-card"><div class="del-icon">📈</div><h4>Delivery Metrics</h4><p>DORA metrics, cycle time, and flow efficiency measured before and after — so improvement is visible.</p></div>
+          <div class="del-card"><div class="del-icon">🎯</div><h4>OKR Framework</h4><p>Company and team OKRs aligned from leadership to engineering. Everyone knows why they're building what they're building.</p></div>
+          <div class="del-card"><div class="del-icon">🤝</div><h4>Team Coaching</h4><p>Ongoing coaching sessions with engineering leads and teams — embedded, not lecture-based.</p></div>
+          <div class="del-card"><div class="del-icon">📋</div><h4>Agile Playbook</h4><p>Your own documented practices, team agreements, and working norms — adapted to your culture, not copied from a textbook.</p></div>
+        </div>
+        <div class="for-whom" style="margin-top:20px;">
+          <h4>This service is right for you if…</h4>
+          <ul class="sp-list">
+            <li class="light"><div class="fw-dot"></div>You're "doing Agile" but it doesn't feel like it's working</li>
+            <li class="light"><div class="fw-dot"></div>Sprints end without clear outcomes and nobody is sure why</li>
+            <li class="light"><div class="fw-dot"></div>Engineering and product are constantly misaligned on priorities</li>
+            <li class="light"><div class="fw-dot"></div>Leadership wants faster delivery but the team says it's impossible</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="sp-section alt">
+    <div class="container">
+      <h2 class="sp-h2">How we coach</h2>
+      <div class="process-steps">
+        <div class="process-step"><div class="step-num">01</div><div class="step-body"><h4>Delivery Diagnostic</h4><p>We observe your current process, measure your delivery metrics, and interview team members at all levels to understand the real blockers.</p></div></div>
+        <div class="process-step"><div class="step-num">02</div><div class="step-body"><h4>Transformation Design</h4><p>We co-design a roadmap with your leadership. No imposed frameworks — we recommend practices based on your specific context and culture.</p></div></div>
+        <div class="process-step"><div class="step-num">03</div><div class="step-body"><h4>Embedded Coaching</h4><p>We work alongside your teams — in planning sessions, retrospectives, and 1:1s — coaching through real work, not hypotheticals.</p></div></div>
+        <div class="process-step"><div class="step-num">04</div><div class="step-body"><h4>Measurement & Graduation</h4><p>We track delivery metrics throughout, celebrate genuine improvement, and exit only when your teams can sustain the practices independently.</p></div></div>
+      </div>
+      <div class="sp-cta" style="background:linear-gradient(135deg,#8B1A2C,#6b1421);"><h3>Is your Agile transformation actually working?</h3><p>Let's find out together — a free 30-minute delivery diagnostic call.</p><button class="btn-white">Schedule a Free Diagnostic Call</button></div>
+    </div>
+  </section>
+  <footer><div class="container"><div class="footer-bottom" style="border-top:none;padding-top:0;"><span class="footer-copy">© 2025 DEOTECH — <span onclick="showPage('home')" style="cursor:pointer;color:var(--teal);opacity:.6;">← Back to Home</span></span></div></div></footer>
+</div>
+
+<script>
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page-'+id).classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+  document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active-nav'));
+  if(id==='home') document.querySelector('.nav-link').classList.add('active-nav');
+}
+function scrollToServices(){showPage('home');setTimeout(()=>{document.getElementById('services').scrollIntoView({behavior:'smooth'})},100);}
+function scrollToAbout(){showPage('home');setTimeout(()=>{document.getElementById('about').scrollIntoView({behavior:'smooth'})},100);}
+function scrollToCTA(){showPage('home');setTimeout(()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth'})},100);}
+</script>
+</body>
+</html>
