@@ -801,6 +801,9 @@ function showPage(id){
 function scrollToServices(){showPage('home');setTimeout(()=>{document.getElementById('services').scrollIntoView({behavior:'smooth'})},100);}
 function scrollToAbout(){showPage('home');setTimeout(()=>{document.getElementById('about').scrollIntoView({behavior:'smooth'})},100);}
 function scrollToCTA(){showPage('home');setTimeout(()=>{document.getElementById('contact').scrollIntoView({behavior:'smooth'})},100);}
+window.addEventListener('DOMContentLoaded', function() {
+  showPage('home');
+});
 </script>
 </body>
 </html>
