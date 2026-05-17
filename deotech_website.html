@@ -23,7 +23,7 @@ a{text-decoration:none;color:inherit;}
 /* ── NAV ── */
 nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--lightgray);padding:0 5%;}
 .nav-inner{max-width:1200px;margin:0 auto;height:68px;display:flex;align-items:center;justify-content:space-between;}
-.nav-logo img{height:38px;display:block;}
+.nav-logo img{height:100px;display:block;mix-blend-mode:multiply;background:transparent;}
 .nav-links{display:flex;align-items:center;gap:32px;}
 .nav-link{font-size:14px;color:var(--textsub);cursor:pointer;transition:color .2s;}
 .nav-link:hover{color:var(--dn);}
@@ -134,7 +134,7 @@ section{padding:80px 0;}
 /* ── FOOTER ── */
 footer{background:var(--dn2);padding:56px 0 24px;}
 .footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:36px;margin-bottom:48px;}
-.footer-logo img{height:32px;filter:brightness(0) invert(1) opacity(0.7);}
+.footer-logo img{height:32px;filter:brightness(0) invert(1);background:transparent;}
 .footer-brand p{font-size:12px;color:rgba(255,255,255,.35);line-height:1.8;margin-top:14px;max-width:220px;}
 .footer-reg{font-size:10px;color:rgba(255,255,255,.18);margin-top:8px;line-height:1.6;}
 .footer-col h4{font-size:10px;font-weight:500;color:rgba(255,255,255,.4);text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px;}
@@ -212,13 +212,13 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 <nav>
   <div class="nav-inner">
     <div class="nav-logo" onclick="showPage('home')" style="cursor:pointer;">
-      <img src="screen.png" alt="Deotech">
+      <img src="screen-removebg-preview.png" alt="Deotech">
     </div>
     <div class="nav-links">
       <span class="nav-link" onclick="showPage('home')">Home</span>
       <span class="nav-link" onclick="scrollToServices()">Services</span>
       <span class="nav-link" onclick="scrollToAbout()">About</span>
-      <div class="lang-sw">EN / TR</div>
+     
       <a href="mailto:hello@deotech.com.tr" class="nav-cta" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Book a Call</a>
     </div>
   </div>
@@ -234,7 +234,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
       <h1>Engineering Excellence.<br>Delivered <span class="hero-accent">Without Overhead.</span></h1>
       <p class="hero-sub">Deotech is a technology consultancy delivering expert software architecture, AI transformation, DevOps, and agile advisory to global organizations — with the precision of a specialist, not the overhead of an agency.</p>
       <div class="hero-btns">
-        <a href="mailto:hello@deotech.com.tr" class="btn-red" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">&#128197; Schedule a Discovery Call</a>
+        <a href="mailto:hello@deotech.com.tr" class="btn-red" style="text-decoration:none; cursor:pointer;">&#128197; Schedule a Discovery Call</a>
         <button class="btn-outline" onclick="scrollToServices()">View Services →</button>
       </div>
       <div class="hero-trust">
@@ -387,7 +387,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
     <div class="container">
       <div class="footer-grid">
         <div class="footer-brand">
-          <div class="footer-logo"><img src="logo.png" style="height: 48px;" alt="Deotech"></div>
+          <div><img src="footer_logo-removebg-preview.png" style="height: 50px;" alt="Deotech"></div>
           <p>Technology consultancy. Global contracts. Expert delivery.</p>
           <p class="footer-reg">DEOTECH Bilişim ve Danışmanlık A.Ş.<br>Incorporated in Turkey · Est. December 2020</p>
         </div>
@@ -397,8 +397,8 @@ footer{background:var(--dn2);padding:56px 0 24px;}
           <a onclick="showPage('svc2')">Software Development</a>
           <a onclick="showPage('svc3')">DevOps Engineering</a>
           <a onclick="showPage('svc4')">Automation Engineering</a>
-          <a onclick="showPage('svc5')" class="highlight">AI Transformation</a>
-          <a onclick="showPage('svc6')" class="highlight">Agile Transformation</a>
+          <a onclick="showPage('svc5')">AI Transformation</a>
+          <a onclick="showPage('svc6')">Agile Transformation</a>
         </div>
         <div class="footer-col">
           <h4>Company</h4>
@@ -410,13 +410,13 @@ footer{background:var(--dn2);padding:56px 0 24px;}
           <h4>Get in Touch</h4>
           <a>hello@deotech.com.tr</a>
           <a href="https://linkedin.com/company/deotechbilisim/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-          <a>GitHub</a>
+    
           <a class="highlight" style="margin-top:8px;" href="mailto:hello@deotech.com.tr">Book a Discovery Call →</a>
         </div>
       </div>
       <div class="footer-bottom">
         <span class="footer-copy">© 2025 DEOTECH Bilişim ve Danışmanlık A.Ş. All rights reserved.</span>
-        <span class="footer-copy">Privacy Policy · EN / TR</span>
+        <span class="footer-copy">Privacy Policy</span>
       </div>
     </div>
   </footer>
