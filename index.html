@@ -46,6 +46,7 @@ section{padding:80px 0;}
 
 /* ── HERO ── */
 .hero{background:var(--dn);color:white;padding:100px 0 80px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:0;right:0;width:50%;height:100%;background:url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1200&q=80') center/cover;opacity:.08;z-index:1;}
 .hero-ring1{position:absolute;top:-80px;right:-80px;width:420px;height:420px;border:1px solid rgba(110,201,196,.1);border-radius:50%;}
 .hero-ring2{position:absolute;top:-10px;right:-10px;width:260px;height:260px;border:1px solid rgba(110,201,196,.07);border-radius:50%;}
 .hero-sq{position:absolute;bottom:-60px;left:5%;width:140px;height:140px;border:1px solid rgba(255,255,255,.04);transform:rotate(45deg);}
@@ -81,12 +82,14 @@ section{padding:80px 0;}
 .svc-header-left p{font-size:14px;color:rgba(255,255,255,.5);margin-top:10px;line-height:1.75;}
 .svc-count{font-size:11px;color:rgba(110,201,196,.6);border:1px solid rgba(110,201,196,.2);border-radius:5px;padding:5px 11px;white-space:nowrap;}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07);border-radius:12px;overflow:hidden;}
-.svc-card{background:rgba(255,255,255,.025);padding:28px 24px;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;position:relative;}
+.svc-card{background:rgba(255,255,255,.025);padding:28px 24px;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;position:relative;overflow:hidden;}
+.svc-card::before{content:'';position:absolute;top:0;right:0;width:80px;height:80px;opacity:.04;background-size:cover;background-position:center;border-radius:8px;background-image:var(--bg-img);}
 .svc-card:hover{background:rgba(255,255,255,.065);border-bottom-color:var(--teal);}
+.svc-card:hover::before{opacity:.08;}
 .svc-card-new{background:rgba(139,26,44,.06);}
 .svc-card-new:hover{background:rgba(139,26,44,.12);border-bottom-color:var(--brd);}
-.svc-new-badge{position:absolute;top:14px;right:14px;font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:rgba(139,26,44,.65);color:rgba(255,255,255,.9);border-radius:3px;padding:2px 7px;}
-.svc-icon{width:38px;height:38px;background:rgba(110,201,196,.14);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px;color:var(--teal);}
+.svc-new-badge{position:absolute;top:14px;right:14px;font-size:9px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;background:rgba(139,26,44,.65);color:rgba(255,255,255,.9);border-radius:3px;padding:2px 7px;z-index:3;}
+.svc-icon{width:38px;height:38px;background:rgba(110,201,196,.14);border-radius:9px;display:flex;align-items:center;justify-content:center;margin-bottom:14px;font-size:18px;color:var(--teal);position:relative;z-index:2;}
 .svc-card-new .svc-icon{background:rgba(139,26,44,.18);color:#e8869a;}
 .svc-num{font-size:10px;font-weight:500;color:rgba(110,201,196,.55);letter-spacing:.1em;margin-bottom:7px;}
 .svc-card-new .svc-num{color:rgba(232,134,154,.55);}
@@ -162,6 +165,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 .sp-section{padding:72px 0;}
 .sp-section.alt{background:var(--offwhite);}
 .sp-section.dark{background:var(--dn);color:white;}
+.svc-page-hero::after{content:'';position:absolute;bottom:0;right:0;width:45%;height:70%;background-size:cover;background-position:center;opacity:.06;z-index:1;border-radius:12px;}
 .sp-2col{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
 .sp-h2{font-size:clamp(20px,2.5vw,26px);color:var(--text);line-height:1.3;margin-bottom:16px;}
 .sp-h2.light{color:white;}
@@ -281,7 +285,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
         <span class="svc-count">6 practice areas</span>
       </div>
       <div class="svc-grid">
-        <div class="svc-card" onclick="showPage('svc1')">
+        <div class="svc-card" onclick="showPage('svc1')" style="--bg-img:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&q=80');">
           <div class="svc-icon">⬡</div>
           <div class="svc-num">01 — Architecture</div>
           <div class="svc-title">Software Architecture & Advisory</div>
@@ -289,7 +293,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
           <div class="svc-tags"><span class="svc-tag">Microservices</span><span class="svc-tag">Cloud Migration</span><span class="svc-tag">System Design</span></div>
           <div class="svc-learn">Explore service →</div>
         </div>
-        <div class="svc-card" onclick="showPage('svc2')">
+        <div class="svc-card" onclick="showPage('svc2')" style="--bg-img:url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400&q=80');">
           <div class="svc-icon">&lt;/&gt;</div>
           <div class="svc-num">02 — Development</div>
           <div class="svc-title">Software Engineering</div>
@@ -297,7 +301,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
           <div class="svc-tags"><span class="svc-tag">Custom Software</span><span class="svc-tag">API Integration</span><span class="svc-tag">Tech Debt</span></div>
           <div class="svc-learn">Explore service →</div>
         </div>
-        <div class="svc-card" onclick="showPage('svc3')">
+        <div class="svc-card" onclick="showPage('svc3')" style="--bg-img:url('https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=400&q=80');">
           <div class="svc-icon">⚙</div>
           <div class="svc-num">03 — DevOps</div>
           <div class="svc-title">DevOps Engineering</div>
@@ -305,7 +309,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
           <div class="svc-tags"><span class="svc-tag">CI/CD</span><span class="svc-tag">Kubernetes</span><span class="svc-tag">Terraform</span></div>
           <div class="svc-learn">Explore service →</div>
         </div>
-        <div class="svc-card" onclick="showPage('svc4')">
+        <div class="svc-card" onclick="showPage('svc4')" style="--bg-img:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80');">
           <div class="svc-icon">◎</div>
           <div class="svc-num">04 — Automation</div>
           <div class="svc-title">Automation Engineering</div>
@@ -313,7 +317,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
           <div class="svc-tags"><span class="svc-tag">Test Automation</span><span class="svc-tag">Prometheus</span><span class="svc-tag">Grafana</span></div>
           <div class="svc-learn">Explore service →</div>
         </div>
-        <div class="svc-card" onclick="showPage('svc5')">
+        <div class="svc-card" onclick="showPage('svc5')" style="--bg-img:url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&q=80');">
           <div class="svc-icon">◈</div>
           <div class="svc-num">05 — AI Transformation</div>
           <div class="svc-title">AI Transformation & Advisory</div>
@@ -321,7 +325,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
           <div class="svc-tags"><span class="svc-tag">AI Strategy</span><span class="svc-tag">LLM Integration</span><span class="svc-tag">AI Governance</span></div>
           <div class="svc-learn">Explore service →</div>
         </div>
-        <div class="svc-card" onclick="showPage('svc6')">
+        <div class="svc-card" onclick="showPage('svc6')" style="--bg-img:url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80');">
           <div class="svc-icon">↺</div>
           <div class="svc-num">06 — Agile Transformation</div>
           <div class="svc-title">Agile Transformation & Coaching</div>
@@ -426,7 +430,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 
 <!-- SVC 1: SOFTWARE ARCHITECTURE -->
 <div id="page-svc1" class="page">
-  <section class="svc-page-hero">
+  <section class="svc-page-hero" style="background-image:linear-gradient(135deg, var(--dn) 0%, rgba(27,45,94,0.95) 100%), url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=1200&q=80');background-size:cover;background-position:center;">
     <div class="hero-ring1"></div><div class="hero-ring2"></div>
     <div class="container svc-hero-inner">
       <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
@@ -487,7 +491,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 
 <!-- SVC 2: SOFTWARE DEVELOPMENT -->
 <div id="page-svc2" class="page">
-  <section class="svc-page-hero">
+  <section class="svc-page-hero" style="background-image:linear-gradient(135deg, var(--dn) 0%, rgba(27,45,94,0.95) 100%), url('https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=1200&q=80');background-size:cover;background-position:center;">
     <div class="hero-ring1"></div><div class="hero-ring2"></div>
     <div class="container svc-hero-inner">
       <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
@@ -548,7 +552,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 
 <!-- SVC 3: DEVOPS -->
 <div id="page-svc3" class="page">
-  <section class="svc-page-hero">
+  <section class="svc-page-hero" style="background-image:linear-gradient(135deg, var(--dn) 0%, rgba(27,45,94,0.95) 100%), url('https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=1200&q=80');background-size:cover;background-position:center;">
     <div class="hero-ring1"></div><div class="hero-ring2"></div>
     <div class="container svc-hero-inner">
       <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
@@ -609,7 +613,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 
 <!-- SVC 4: AUTOMATION -->
 <div id="page-svc4" class="page">
-  <section class="svc-page-hero">
+  <section class="svc-page-hero" style="background-image:linear-gradient(135deg, var(--dn) 0%, rgba(27,45,94,0.95) 100%), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80');background-size:cover;background-position:center;">
     <div class="hero-ring1"></div><div class="hero-ring2"></div>
     <div class="container svc-hero-inner">
       <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
@@ -670,7 +674,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 
 <!-- SVC 5: AI TRANSFORMATION -->
 <div id="page-svc5" class="page">
-  <section class="svc-page-hero" style="background:linear-gradient(135deg,#1B2D5E 0%,#2d1826 100%);">
+  <section class="svc-page-hero" style="background-image:linear-gradient(135deg,rgba(27,45,94,0.95) 0%,rgba(45,24,38,0.95) 100%), url('https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80');background-size:cover;background-position:center;">
     <div class="hero-ring1"></div><div class="hero-ring2"></div>
     <div class="container svc-hero-inner">
       <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
@@ -731,7 +735,7 @@ footer{background:var(--dn2);padding:56px 0 24px;}
 
 <!-- SVC 6: AGILE TRANSFORMATION -->
 <div id="page-svc6" class="page">
-  <section class="svc-page-hero" style="background:linear-gradient(135deg,#1B2D5E 0%,#2d1826 100%);">
+  <section class="svc-page-hero" style="background-image:linear-gradient(135deg,rgba(27,45,94,0.95) 0%,rgba(45,24,38,0.95) 100%), url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1200&q=80');background-size:cover;background-position:center;">
     <div class="hero-ring1"></div><div class="hero-ring2"></div>
     <div class="container svc-hero-inner">
       <div class="back-btn" onclick="showPage('home')">← Back to all services</div>
